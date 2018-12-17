@@ -1,7 +1,9 @@
 class CreateCategory < ActiveRecord::Migration[5.2]
   def change
-    t.string :name
-    t.belongs_to :restaurants
-    t.timestamps
+    create_table :categories do |t|
+      t.string :name
+      t.belongs_to :restaurants
+      t.timestamps
+    end 
   end
 end

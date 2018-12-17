@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    #create a new user
+    user = User.create(user_params)
+    if user
+      redirect_to user_path(user)
+    else
+      flash[:message] = "Invalid entry, please try again."
+      redirect_to new_user_path
+    end
   end
 
   def destroy
