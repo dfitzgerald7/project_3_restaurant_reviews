@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    #user can delete their own 
   end
 
   private

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "static#welcome"
   resources :reviews
-  resources :users
+  resources :users do
+    resources :restaurants, only: [:show]
+  end
   resources :restaurants do
     resources :reviews, only: [:show, :new]
   end
