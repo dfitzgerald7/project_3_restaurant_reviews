@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "review#index"
+  root "reviews#index"
   resources :reviews
   resources :users do
     resources :restaurants, only: [:show]

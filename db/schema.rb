@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 2018_12_17_222355) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "content"
-    t.integer "restaurants_id"
-    t.integer "users_id"
+    t.integer "restaurant_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["restaurants_id"], name: "index_reviews_on_restaurants_id"
-    t.index ["users_id"], name: "index_reviews_on_users_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
