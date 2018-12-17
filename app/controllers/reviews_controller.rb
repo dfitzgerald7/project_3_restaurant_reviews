@@ -10,11 +10,9 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    if restaurant = Restaurant.find(params[:restaurant_id])
-      @reviews = restaurant.reviews
-    else
-      @reviews = Review.all
-    end
+    #homepage: timeline of most recent reviews with restaurants 
+    @reviews = Review.all_sorted
+    @user = current_user
   end
 
   def show
@@ -23,6 +21,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:restaurant_id)
+      params.require(:review).permit(:rating, :content, :restaurant_id)
     end
 end
