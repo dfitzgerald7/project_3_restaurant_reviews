@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:show, :new]
   end
 
+  get "/login", as: "session#login"
+  get "/logout", as: "session#logout"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
