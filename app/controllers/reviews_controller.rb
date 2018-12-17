@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-
+    review = Review.create(review_params)
+    redirect_to review_path(review)
   end
 
   def index
@@ -22,6 +23,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      
+      params.require(:review).permit(:restaurant_id)
     end
 end
