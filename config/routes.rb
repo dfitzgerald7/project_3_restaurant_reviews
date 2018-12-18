@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:show, :new]
   end
 
-  get "/login", to: "session#login", as: "login"
+  get "/login", to: "session#new", as: "login"
+  post "/login", to: "session#create"
   get "/logout", to: "session#logout", as: "logout"
 
 
