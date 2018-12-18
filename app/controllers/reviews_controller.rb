@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    #homepage: timeline of most recent reviews with restaurants 
+    #homepage: timeline of most recent reviews with restaurants
     @reviews = Review.all_sorted
     @user = current_user
   end
