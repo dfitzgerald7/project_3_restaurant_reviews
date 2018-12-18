@@ -1,4 +1,11 @@
 class ReviewsController < ApplicationController
+  def index
+    #homepage: timeline of most recent reviews with restaurants
+    #links to specific restaurants for all reviews
+    @reviews = Review.all_sorted
+    @user = current_user
+  end
+  
   def new
     @restaurant = restaurant if restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new
@@ -9,12 +16,7 @@ class ReviewsController < ApplicationController
     redirect_to review_path(review)
   end
 
-  def index
-    #homepage: timeline of most recent reviews with restaurants
-    #links to specific restaurants for all reviews
-    @reviews = Review.all_sorted
-    @user = current_user
-  end
+
 
   def show
     @review = Review.find(params[:id])

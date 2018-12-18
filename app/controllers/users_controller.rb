@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user
+      session[:user_id] = user.id
       redirect_to user_path(user)
     else
       flash[:message] = "Invalid entry, please try again."
@@ -14,8 +15,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    if session[:user_id] = params[:id]
+      @user = User.find(params[:id])
+    else
+      flash[:message] = "You cannot see another user's information."
+      redirect_to :root
+    end
+  end
+
   def destroy
-    #user can delete their own 
+    #user can delete their own
   end
 
   private
