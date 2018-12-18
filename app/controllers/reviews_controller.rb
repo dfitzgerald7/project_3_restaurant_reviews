@@ -7,14 +7,19 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @restaurant = restaurant.name if restaurant = Restaurant.find(params[:restaurant_id])
-    @review = Review.new
+    if restaurant = Restaurant.find(params[:restaurant_id])
+      @restaurant = restaurant.name
+    end
+    @review = Review.new(restaurant_id: params[:restaurant_id])
   end
 
   def create
-    user = User.find(sessin[:user_id])
+    user = User.find(session[:user_id])
     if user
       review = Review.create(review_params)
+      review.user = user
+      review.save
+      binding.pry
       redirect_to user_path(user)
     else
       flash[:message] = "You must be logged in to make a review."
