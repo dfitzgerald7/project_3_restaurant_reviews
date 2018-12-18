@@ -7,4 +7,10 @@ class Restaurant < ApplicationRecord
     Restaurant.joins(:reviews).group(:restaurant_id).order("avg(rating) desc")
   end
 
+  def rating
+    sum = 0
+    num = self.reviews.length
+    self.reviews.each{|review| sum += review.rating}
+    sum/num if self.reviews
+  end
 end

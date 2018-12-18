@@ -2,7 +2,7 @@
 <h1> Welcome to RESTaurants! </h1>
 <ul>
 <% @reviews.each do |review| %>
-  <li> Restaurant: <%= review.restaurant %> </li>
+  <li> Restaurant: <%= review.restaurant.name %> </li>
   <li> Rating: <%= review.rating %> </li>
   <li> Review: <%= review.content %> </li>
 <% end %>
