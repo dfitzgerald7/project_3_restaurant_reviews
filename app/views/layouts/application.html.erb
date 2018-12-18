@@ -17,7 +17,8 @@
         <%= link_to "Sign Up", new_user_path %>
         <%= link_to "Log In", login_path %>
       <%end%>
-      <%= flash[:message] %> 
+      <%= link_to "Homepage", root_path %> 
+      <%= flash[:message] %>
     </nav>
     <%= yield %>
   </body>
