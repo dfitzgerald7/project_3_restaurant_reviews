@@ -2,7 +2,7 @@
 <h1> Welcome to RESTaurants! </h1>
 <ul>
 <% @reviews.each do |review| %>
-  <li> Restaurant: <%= review.restaurant.name %> </li>
+  <li> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> </li>
   <li> Rating: <%= review.rating %> </li>
   <li> Review: <%= review.content %> </li>
 <% end %>
