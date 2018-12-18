@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @restaurant = restaurant if restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = restaurant.name if restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new
   end
 
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     else
       flash[:message] = "You must be logged in to make a review."
       redirect_to login_path
-    end 
+    end
   end
 
 
