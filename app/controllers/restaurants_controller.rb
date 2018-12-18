@@ -2,15 +2,14 @@ class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show]
 
   def index
-    
-    @restaurants = Restaurant.all
-    #shows all recent restaurant reviews
+    @restaurants = Restaurant.top_rated
+    #shows top rated restaurants
     #if logged in, you can see everything else but add restaurants, reviews, and upvote
     #if logged in, can sort by categories
   end
 
   def new
-    #only accessable if logged in
+    #only accessable if admin
   end
 
   def show
