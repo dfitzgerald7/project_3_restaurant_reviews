@@ -8,10 +8,6 @@ class RestaurantsController < ApplicationController
     #if logged in, can sort by categories
   end
 
-  def new
-    #only accessable if admin
-  end
-
   def show
     #shows all reviews for that individual restaurant
     # if logged in, can vote on reviews

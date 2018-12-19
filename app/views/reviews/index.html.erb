@@ -1,6 +1,6 @@
 
-<h1> Welcome to RESTaurants! </h1>
-<h2> Timeline of recent reviews: </h2>
+<h1 class="center"> Welcome to RESTaurants! </h1>
+<h2 class="center"> Timeline of recent reviews: </h2>
 <ul>
 <% @reviews.each do |review| %>
   <li> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> </li>
@@ -11,6 +11,7 @@
 </ul>
 
 <% if logged_in? %>
-  <% link_to "Have you eaten anywhere recently"%> 
-
+  <%= link_to "Have you eaten anywhere recently? Add a review!", new_review_path %>
+<% else %>
+  <p> Sign up or Log in to leave a review </p>
 <% end %>
