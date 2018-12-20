@@ -12,22 +12,22 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @restaurant = params[:restaurant_id] ? Restaurant.find(params[:restaurant_id]) : Restaurant.new
-    @review = @restaurant.reviews.build
+    if current_user.id == session[:user_id]
+      @restaurant = params[:restaurant_id] ? Restaurant.find(params[:restaurant_id]) : Restaurant.new
+      @review = @restaurant.reviews.build
+    else
+      flash[:message] = "You must be logged in to make a review."
+      redirect_to login_path
+    end
   end
 
   def create
-    if current_user == User.find(session[:user_id])
+    if current_user.id == session[:user_id]
       @review = Review.create(review_params)
       @review.user = current_user
       @review.save
     #  binding.pry
       if @review.invalid?
-        # if params[:review][:restaurant_id] != ""
-        #   return redirect_to new_restaurant_review_path(Restaurant.find(params[:review][:restaurant_id]))
-        # else
-        #   return redirect_to new_review_path
-        # end
         render :new
       else
         redirect_to user_path(current_user)
@@ -36,12 +36,6 @@ class ReviewsController < ApplicationController
       flash[:message] = "You must be logged in to make a review."
       redirect_to login_path
     end
-  end
-
-
-
-  def show
-    @review = Review.find(params[:id])
   end
 
   private

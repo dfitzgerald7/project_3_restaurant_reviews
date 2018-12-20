@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root "reviews#index"
-  resources :reviews
+  resources :reviews, only: [:index, :new, :create]
   resources :users do
     resources :reviews, only: [:index]
   end
-  resources :restaurants do
-    resources :reviews, only: [:show, :new]
+  resources :restaurants, only: [:index, :show] do
+    resources :reviews, only: [:new]
   end
 
   get "/login", to: "session#new", as: "login"

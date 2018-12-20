@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 r1 = Restaurant.create(name: "Chipotle")
 r2 = Restaurant.create(name: "5 guys")
 r3 = Restaurant.create(name: "Taco Bell")

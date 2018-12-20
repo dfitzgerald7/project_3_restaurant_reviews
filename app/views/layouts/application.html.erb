@@ -13,6 +13,7 @@
     <nav class="indigo darken-4">
       <% if logged_in? %>
         <%= link_to "Logout", logout_path, class: "red-text text-lighten-4" %>
+        <%= link_to "Find a restaurant near you!", restaurants_path, class: "red-text text-lighten-4" %>
       <% else %>
         <%= link_to "Sign Up", new_user_path %>
         <%= link_to "Log In", login_path %>
