@@ -1,3 +1,17 @@
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      You did not submit a full review. Please try again.
+    </h2>
+
+    <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li class="red-text"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @review do |f| %>
   <%= f.hidden_field :restaurant_id %>
   <%= f.label :restaurant %>
@@ -9,7 +23,7 @@
   <%= f.text_field :rating %>
   <br>
   <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= f.text_area :content %>
   <br>
   <%= f.submit %>
 <% end %>
