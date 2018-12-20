@@ -4,9 +4,12 @@
   <%= f.fields_for :restaurant do |rest|%>
     <%= rest.text_field :name %>
   <% end %>
+  <br>
   <%= f.label :rating  %>
   <%= f.text_field :rating %>
+  <br>
   <%= f.label :content %>
   <%= f.text_field :content %>
+  <br>
   <%= f.submit %>
 <% end %>

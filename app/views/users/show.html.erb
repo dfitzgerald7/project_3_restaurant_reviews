@@ -1,9 +1,15 @@
 
 <h1> Welcome, <%= @user.username %>! </h1>
 <h2> Here are your reviews </h2>
+<div class="row">
 <% @user.reviews.each do |review| %>
-  <%= review.content %>
+  <div><%= review.restaurant.name %> </div>
+
+  Rating: <%= review.rating %>
   <br>
+  <%= review.content %>
+  <br><br>
 <% end %>
+</div>
 <br>
 <%= link_to "Have you eaten anywhere recently? Click here to review it", new_review_path %>
