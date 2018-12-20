@@ -1,8 +1,9 @@
 <%= form_for @review do |f| %>
   <%= f.hidden_field :restaurant_id %>
   <%= f.label :restaurant %>
-  
-  <%= f.text_field :restaurant, value: <%=@restaurant ? @restaurant.name : nil%> %>
+  <%= f.fields_for :restaurant do |rest|%>
+    <%= rest.text_field :name %>
+  <% end %>
   <%= f.label :rating  %>
   <%= f.text_field :rating %>
   <%= f.label :content %>

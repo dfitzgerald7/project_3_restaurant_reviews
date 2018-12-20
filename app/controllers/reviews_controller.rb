@@ -7,15 +7,14 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.find(params[:restaurant_id]) if params[:restaurant_id]
-    @review = @restaurant ? restaurant.reviews.build : Review.new
+    @restaurant = params[:restaurant_id] ? Restaurant.find(params[:restaurant_id]) : Restaurant.new
+    @review = @restaurant.reviews.build
   end
 
   def create
     if current_user == User.find(session[:user_id])
       review = Review.create(review_params)
       review.user = current_user
-      review.restaurant = Restaurant.create(name: params[:restaurant]) unless review_params[:restaurant_id] == ""
       review.save
       binding.pry
       redirect_to user_path(current_user)
@@ -33,6 +32,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:rating, :content, :restaurant_id)
+      params.require(:review).permit(:rating, :content, restaurant_attributes: [:name])
     end
 end
