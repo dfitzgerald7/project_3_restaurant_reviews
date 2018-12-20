@@ -2,8 +2,13 @@ class ReviewsController < ApplicationController
   def index
     #homepage: timeline of most recent reviews with restaurants
     #links to specific restaurants for all reviews
-    @reviews = Review.all_sorted
-    @user = current_user
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @reviews = @user.reviews
+    else
+      @reviews = Review.all_sorted
+      @user = current_user
+    end
   end
 
   def new
@@ -16,7 +21,14 @@ class ReviewsController < ApplicationController
       review = Review.create(review_params)
       review.user = current_user
       review.save
-      binding.pry
+    #  binding.pry
+      if review.invalid?
+        if params[:review][:restaurant_id] != ""
+          return redirect_to new_restaurant_review_path(Restaurant.find(params[:review][:restaurant_id]))
+        else
+          return redirect_to new_review_path
+        end
+      end
       redirect_to user_path(current_user)
     else
       flash[:message] = "You must be logged in to make a review."
