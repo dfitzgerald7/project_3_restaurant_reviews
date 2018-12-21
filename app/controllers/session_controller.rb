@@ -15,6 +15,18 @@ class SessionController < ApplicationController
     end
   end
 
+  def github
+    @user = User.find_or_initialize_by(id: auth['uid']) do |u|
+      #binding.pry
+      flash[:message] = "Login successful."
+      u.username = auth['info']['nickname']
+      u.password = "password"
+      u.save
+      session[:user_id] = @user.id
+    end
+    redirect_to :root
+  end
+
   def logout
     session.clear
     redirect_to :root
@@ -24,4 +36,8 @@ class SessionController < ApplicationController
     def session_params
       params.require(:session).permit(:username, :password)
     end
+
+    def auth
+     request.env['omniauth.auth']
+   end
 end

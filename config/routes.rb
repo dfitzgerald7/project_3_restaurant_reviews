@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/login", to: "session#new", as: "login"
   post "/login", to: "session#create"
   get "/logout", to: "session#logout", as: "logout"
-
+  get "/auth/github/callback", to: "session#github"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
