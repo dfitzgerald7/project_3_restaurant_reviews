@@ -1,11 +1,12 @@
 
-<h1> <%= @restaurant.name %> </h1>
+<h1 class="center"> <%= @restaurant.name %> </h1>
+<h3 class="center"> <%=@restaurant.rating%> stars average </h3>
 
 <% @restaurant.reviews.each do |review| %>
-  <%= review.rating %>
-  <%= review.username %>
-  <%= review.content %>
-  <br>
+  <p> <%= review.username%>: <%= review.rating %> stars </p>
+  <div class="row">
+  <p class="col s5 push-s1"> <%= review.content %> <p>
+  </div>
 <% end %>
 
 <%= link_to "Click here to review this restaurant.", new_restaurant_review_path(@restaurant) %>

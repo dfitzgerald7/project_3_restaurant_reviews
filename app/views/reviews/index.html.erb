@@ -1,13 +1,15 @@
 
 <h1 class="center"> Welcome to RESTaurants! </h1>
-<h2 class="center"> Timeline of recent reviews<%=@user ? "for #{@user.username}" : ""%>:</h2>
+<h3 class="center"> Timeline of recent reviews<%=@user ? " for #{@user.username}" : ""%>:</h3>
 <ul>
 
 <% @reviews.each do |review| %>
   <p> <%=link_to review.user.username, user_reviews_path(review.user)%>: </p>
-  <li> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> </li>
-  <li> Rating: <%= review.rating %> </li>
-  <li> Review: <%= review.content %> </li>
+  <div class="row">
+    <li class="col s9 push-s1"> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> <br>
+    Rating: <%= review.rating %> stars <br>
+    Review: <%= review.content %> </li>
+  </div>
   <br>
 <% end %>
 </ul>
