@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    if current_user.id == session[:user_id]
+    if current_user.id == session[:user_id].to_i
       @restaurant = params[:restaurant_id] ? Restaurant.find(params[:restaurant_id]) : Restaurant.new
       @review = @restaurant.reviews.build
     else
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    if current_user.id == session[:user_id]
+    if current_user.id == session[:user_id].to_i
       @review = Review.create(review_params)
       @review.user = current_user
       @review.save

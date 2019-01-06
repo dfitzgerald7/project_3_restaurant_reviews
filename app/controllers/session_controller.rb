@@ -11,18 +11,17 @@ class SessionController < ApplicationController
       redirect_to user_path(user)
     else
       flash[:message] = "Invalid user. Please try again."
-      redirect_to new_user
+      redirect_to login_path
     end
   end
 
   def github
-    @user = User.find_or_initialize_by(id: auth['uid']) do |u|
-      #binding.pry
+    @user = User.find_or_initialize_by(id: auth['uid']).tap do |u|
       flash[:message] = "Login successful."
       u.username = auth['info']['nickname']
       u.password = "password"
       u.save
-      session[:user_id] = @user.id
+      session[:user_id] = u.id
     end
     redirect_to :root
   end
