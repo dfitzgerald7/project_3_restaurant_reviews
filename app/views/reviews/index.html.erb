@@ -3,10 +3,11 @@
 <ul>
 
 <% @reviews.each do |review| %>
-  <p class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </p>
-  <div id="user<%= review.user.index %>"> </div>
+  <button class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </button>
+  <div id="user<%= review.user.id%>"> </div>
   <div class="row">
-    <li class="col s9 push-s1"> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> <br>
+    <li class="col s9 push-s1"> Restaurant: <button
+      class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
     Rating: <%= review.rating %> stars <br>
     Review: <%= review.content %> </li>
   </div>
