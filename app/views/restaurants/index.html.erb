@@ -1,8 +1,8 @@
 
 <h3> Top rated Restaurants </h3>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-    <li> <%=restaurant.rating %> stars: <%= link_to restaurant.name, restaurant_path(restaurant) %>  </li>
-    <br>
-  <% end %>
-</ul>
+
+  <button class="top_restaurants"> Click here to see the top rated restaurants!</button>
+
+  <div id="restaurants">
+
+    </div>
