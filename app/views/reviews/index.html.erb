@@ -8,6 +8,9 @@
     <li class="col s9 push-s1"> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> <br>
     Rating: <%= review.rating %> stars <br>
     Review: <%= review.content %> </li>
+    <% if review.user == @current_user %>
+      <%= link_to "Edit this review", edit_review_path(review) %>
+    <% end %>
   </div>
   <br>
 <% end %>

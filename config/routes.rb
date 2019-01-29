@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root "reviews#index"
-  resources :reviews, only: [:index, :new, :create]
+  resources :reviews, only: [:index, :new, :create, :edit, :update]
   resources :users do
     resources :reviews, only: [:index]
   end
+  #/user/1/reviews
   resources :restaurants, only: [:index, :show] do
     resources :reviews, only: [:new]
   end

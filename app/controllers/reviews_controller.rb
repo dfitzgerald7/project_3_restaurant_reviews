@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
       @reviews = Review.all_sorted
       @user = current_user
     end
+    @current_user = current_user
   end
 
   def new
@@ -36,6 +37,21 @@ class ReviewsController < ApplicationController
       flash[:message] = "You must be logged in to make a review."
       redirect_to login_path
     end
+  end
+
+  def edit
+    @user = current_user
+    @review = Review.find_by(id: params[:id])
+    if @review.user.id != session[:user_id].to_i
+      flash[:message] = "You cannot edit this review."
+      redirect_to :root
+    end
+  end
+
+  def update
+    @review = Review.find_by(id: params[:id])
+    @review.update(review_params)
+    redirect_to user_path(@review.user)
   end
 
   private
