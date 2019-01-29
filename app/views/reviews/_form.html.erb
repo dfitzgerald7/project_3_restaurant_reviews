@@ -1,0 +1,15 @@
+<%= form_for review do |f| %>
+  <%= f.hidden_field :restaurant_id %>
+  <%= f.label :restaurant %>
+  <%= f.fields_for :restaurant do |rest|%>
+    <%= rest.text_field :name %>
+  <% end %>
+  <br>
+  <%= f.label :rating  %>
+  <%= f.text_field :rating %>
+  <br>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <br>
+  <%= f.submit %>
+<% end %>
