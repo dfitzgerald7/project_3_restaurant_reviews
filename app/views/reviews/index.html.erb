@@ -3,7 +3,8 @@
 <ul>
 
 <% @reviews.each do |review| %>
-  <p> <%=link_to review.user.username, user_reviews_path(review.user)%>: </p>
+  <p class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </p>
+  <div id="user<%= review.user.index %>"> </div>
   <div class="row">
     <li class="col s9 push-s1"> Restaurant: <%= link_to review.restaurant.name, restaurant_path(review.restaurant)%> <br>
     Rating: <%= review.rating %> stars <br>
