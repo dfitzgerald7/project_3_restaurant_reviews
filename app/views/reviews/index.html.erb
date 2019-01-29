@@ -8,6 +8,7 @@
   <div class="row">
     <li class="col s9 push-s1"> Restaurant: <button
       class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
+      <div id="restaurant<%= review.restaurant.id %>"> </div> <br>
     Rating: <%= review.rating %> stars <br>
     Review: <%= review.content %> </li>
   </div>

@@ -4,7 +4,6 @@
   /////add jqeury
 $(() => {
   $(".username").on("click", function(el) {
-    console.log(`clicked ${$(this).data("id")}`)
     // el.preventDefault();
     id = $(this).data("id");
     $.get("/users/" + id + ".json", function(data) {
@@ -20,13 +19,13 @@ $(() => {
   $(".restaurant").on("click", function(el) {
     // el.preventDefault();
     id = $(this).data("id");
-    $.get("/users/" + id + ".json", function(data) {
-      // debugger;
+    $.get("/restaurants/" + id + ".json", function(data) {
+      //put average rating here
         let descriptionText = "" //"<div> Average rating:" + sumRatings(data.ratings) + "<div>";
         data.reviews.forEach(review => {
-          descriptionText += "<div>" + review.restaurant.name + ":" + review.rating + "</div>";
+          descriptionText += "<div>" + review.rating + ":" + review.content+ "</div>";
         })
-        $("#user" + id).html(descriptionText);
+        $("#restaurant" + id).html(descriptionText);
     });
   });
 
