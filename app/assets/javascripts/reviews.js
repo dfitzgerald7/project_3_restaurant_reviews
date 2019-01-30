@@ -34,7 +34,8 @@ $(() => {
   $(".review").on("click", () => {
     $(".review").hide();
     $("form").show();
-    $("")
+    $("form input").last().prop('disabled', false);
+
   })
 
   $("form").submit((el) => {
