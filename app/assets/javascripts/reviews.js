@@ -1,6 +1,6 @@
 
 $(document).ready(()=> {
-  $("#new_review_form").hide();
+  $("form").hide();
 });
 
 
@@ -33,7 +33,8 @@ $(() => {
 
   $(".review").on("click", () => {
     $(".review").hide();
-    $("#new_review_form").show();
+    $("form").show();
+    $("")
   })
 
   $("form").submit((el) => {
@@ -50,6 +51,9 @@ $(() => {
           `Rating: ${ review.rating } stars <br>` +
           `Review: ${ review.content } </li>`
       $("#new_review").prepend(html)
+      $("form")[0].reset()
+      $("form").hide()
+      $(".review").show()
     }).fail(review=> {
       $("#error_message").append(review.errors)
     })
