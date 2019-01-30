@@ -10,9 +10,9 @@
 <div id="new_review_form">
   <div>
     <%= form_tag("/reviews", method: "post") do%>
-      Restaurant: <%= text_field_tag "restauarant_name" %>
-      Rating: <%= text_field_tag "rating" %>
-      Content: <%= text_field_tag "content" %>
+      Restaurant: <%= text_field_tag "review[restaurant_attributes][name]" %>
+      Rating: <%= text_field_tag "review[rating]" %>
+      Content: <%= text_field_tag "review[content]" %>
       <%= submit_tag "Submit Review" %>
     <% end %>
     </div>

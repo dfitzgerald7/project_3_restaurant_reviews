@@ -1,7 +1,9 @@
 
-// $() {
+$(document).ready(()=> {
+  $("#new_review_form").hide();
+});
 
-  /////add jqeury
+
 $(() => {
   $(".username").on("click", function(el) {
     // el.preventDefault();
@@ -31,17 +33,7 @@ $(() => {
 
   $(".review").on("click", () => {
     $(".review").hide();
-    $("#new_review_form").html(
-      `<div>
-        <%= form_tag("/reviews", method: "post") do%>
-          Restaurant: <%= text_field_tag "restauarant_name" %>
-          Rating: <%= text_field_tag "rating" %>
-          Content: <%= text_field_tag "content" %>
-          <%= submit_tag "Submit Review" %>
-        <% end %>
-        </div>
-      `
-    )
+    $("#new_review_form").show();
   })
 
  });
