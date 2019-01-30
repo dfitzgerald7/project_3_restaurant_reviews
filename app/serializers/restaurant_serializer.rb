@@ -1,4 +1,4 @@
 class RestaurantSerializer < ActiveModel::Serializer
   attributes :id, :name
-  has_many :reviews, serializer: RestaurantReviewSerializer
+  has_many :reviews#, serializer: RestaurantReviewSerializer
 end

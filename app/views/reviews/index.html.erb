@@ -1,5 +1,12 @@
 
 <h3 class="center"> Timeline of recent reviews<%=@user ? " for #{@user.username}" : ""%>:</h3>
+
+<% if logged_in? %>
+  <%= link_to "Add a review!", new_review_path %>
+<% else %>
+  <p> Sign up or Log in to leave a review </p>
+<% end %>
+
 <ul>
 
 <% @reviews.each do |review| %>
@@ -15,9 +22,3 @@
   <br>
 <% end %>
 </ul>
-
-<% if logged_in? %>
-  <%= link_to "Have you eaten anywhere recently? Add a review!", new_review_path %>
-<% else %>
-  <p> Sign up or Log in to leave a review </p>
-<% end %>

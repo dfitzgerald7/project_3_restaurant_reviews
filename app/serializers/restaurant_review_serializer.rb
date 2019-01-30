@@ -1,5 +1,5 @@
 class RestaurantReviewSerializer < ActiveModel::Serializer
-  attributes :rating, :avg_rating
+  attributes :rating#, :avg_rating
 
 
   # => COME BACK TO THIS
