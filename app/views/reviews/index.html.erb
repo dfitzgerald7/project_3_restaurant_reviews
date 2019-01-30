@@ -2,23 +2,36 @@
 <h3 class="center"> Timeline of recent reviews<%=@user ? " for #{@user.username}" : ""%>:</h3>
 
 <% if logged_in? %>
-  <%= link_to "Add a review!", new_review_path %>
+  <button class="review"> Add a review! </button>
 <% else %>
   <p> Sign up or Log in to leave a review </p>
 <% end %>
 
-<ul>
+<div id="new_review_form">
+  <div>
+    <%= form_tag("/reviews", method: "post") do%>
+      Restaurant: <%= text_field_tag "restauarant_name" %>
+      Rating: <%= text_field_tag "rating" %>
+      Content: <%= text_field_tag "content" %>
+      <%= submit_tag "Submit Review" %>
+    <% end %>
+    </div>
+</div>
 
-<% @reviews.each do |review| %>
-  <button class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </button>
-  <div id="user<%= review.user.id%>"> </div>
-  <div class="row">
-    <li class="col s9 push-s1"> Restaurant: <button
-      class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
-      <div id="restaurant<%= review.restaurant.id %>"> </div> <br>
-    Rating: <%= review.rating %> stars <br>
-    Review: <%= review.content %> </li>
-  </div>
-  <br>
-<% end %>
+
+<ul>
+  <div id="new_review"> </div>
+
+  <% @reviews.each do |review| %>
+    <button class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </button>
+    <div id="user<%= review.user.id%>"> </div>
+    <div class="row">
+      <li class="col s9 push-s1"> Restaurant: <button
+        class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
+        <div id="restaurant<%= review.restaurant.id %>"> </div> <br>
+      Rating: <%= review.rating %> stars <br>
+      Review: <%= review.content %> </li>
+    </div>
+    <br>
+  <% end %>
 </ul>

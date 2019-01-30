@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    binding.pry
     if current_user.id == session[:user_id].to_i
       @review = Review.create(review_params)
       @review.user = current_user
