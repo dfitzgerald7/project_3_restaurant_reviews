@@ -1,8 +1,19 @@
 
-class Restaurant(restaurantObject){
-  const orderedRestaurants = []
-  constructor(){
-    
+class Restaurant {
+  // const orderedRestaurants = []
+  constructor(restaurantObject){
+    this.name = restaurant.name
+    Restaurant.all.push(this)
+  }
+  static all() {
+    orderedRestaurants.push(this)
+    orderedRestaurants.sort(function(a, b){
+      return a.rating - b.rating
+    })
+  }
+
+  static all() {
+    return orderedRestaurants
   }
 }
 
