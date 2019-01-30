@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
       @reviews = Review.all_sorted
       @user = current_user
     end
+
   end
 
   def new
@@ -22,17 +23,26 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
     if current_user.id == session[:user_id].to_i
       @review = Review.create(review_params)
       @review.user = current_user
       @review.save
-    #  binding.pry
-      if @review.invalid?
-        render :new
-      else
-        redirect_to user_path(current_user)
-      end
+      # respond_to do |format|
+      #   format.html {
+      #     if @review.invalid?
+      #       render :new
+      #     else
+      #       redirect_to user_path(current_user)
+      #     end
+      #   }
+      #   format.json {
+          if @review.invalid?
+            render json: {errors: @review.errors.full_messages}, status: :bad_request
+          else
+            render json: @review, status: :ok
+          end
+        # }
+      # end
     else
       flash[:message] = "You must be logged in to make a review."
       redirect_to login_path

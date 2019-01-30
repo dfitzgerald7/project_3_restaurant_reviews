@@ -36,6 +36,25 @@ $(() => {
     $("#new_review_form").show();
   })
 
+  $("form").submit((el) => {
+    el.preventDefault();
+    const review = $("form").serialize();
+    $.post('/reviews', review).done(review => {
+      let html =
+      `<button class="username" data-id="${review.user.id }"> ${review.user.username}: </button>` +
+        `  <div id="user${ review.user.id}"> </div>` +
+        `  <div class="row">` +
+          `<li class="col s9 push-s1"> Restaurant: ` +
+          `<button class="restaurant" data-id="${ review.restaurant.id }"> ${review.restaurant.name} </button> <br>` +
+          `<div id="restaurant${ review.restaurant.id }"> </div> <br>` +
+          `Rating: ${ review.rating } stars <br>` +
+          `Review: ${ review.content } </li>`
+      $("#new_review").prepend(html)
+    }).fail(review=> {
+      $("#error_message").append(review.errors)
+    })
+  })
+
  });
 
 // function sumRatings(reviewsArray){

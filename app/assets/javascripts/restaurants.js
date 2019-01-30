@@ -1,21 +1,21 @@
 
 class Restaurant {
-  // const orderedRestaurants = []
   constructor(restaurantObject){
     this.name = restaurant.name
-    Restaurant.all.push(this)
   }
-  static all() {
-    orderedRestaurants.push(this)
-    orderedRestaurants.sort(function(a, b){
+  addOrdered() {
+    Restaurant.orderedRestaurants.push(this)
+    Restaurant.orderedRestaurants.sort(function(a, b){
       return a.rating - b.rating
     })
   }
 
   static all() {
-    return orderedRestaurants
+    return this.orderedRestaurants
+    //might have to do Restaurant.
   }
 }
+Restaurant.orderedRestaurants = []
 
 
 $(()=> {
