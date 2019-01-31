@@ -10,11 +10,12 @@ $(() => {
     id = $(this).data("id");
     $.get("/users/" + id + ".json", function(data) {
       // debugger;
-        let descriptionText = "" //"<div> Average rating:" + sumRatings(data.ratings) + "<div>";
+        const userDiv = $("#user" + id)
+        userDiv.append('<div class="row"')
         data.reviews.forEach(review => {
-          descriptionText += "<div>" + review.restaurant.name + ":" + review.rating + "</div>";
+          userDiv.append( '<div class="col s12 offset-s6">' + review.restaurant.name + ":" + review.rating + '</div>')
         })
-        $("#user" + id).html(descriptionText);
+        userDiv.append('</div>')
     });
   });
 

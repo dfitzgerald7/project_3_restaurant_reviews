@@ -25,11 +25,11 @@
 
   <% @reviews.each do |review| %>
     <button class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </button>
-    <div id="user<%= review.user.id%>"> </div>
+    <div id="user<%= review.user.id%>"> </div> <!-- adding user show page -->
     <div class="row">
       <li class="col s9 push-s1"> Restaurant: <button
         class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
-        <div id="restaurant<%= review.restaurant.id %>"> </div> <br>
+        <div id="restaurant<%= review.restaurant.id %>"> </div> <br> <!-- restaurant show page -->
       Rating: <%= review.rating %> stars <br>
       Review: <%= review.content %> </li>
     </div>
