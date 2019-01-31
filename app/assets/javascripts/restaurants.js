@@ -1,7 +1,6 @@
 
 class Restaurant {
   constructor(restaurantObject){
-    console.log(restaurantObject)
     this.name = restaurantObject.name
     this.avg_rating = restaurantObject.avg_rating
   }
@@ -12,9 +11,12 @@ class Restaurant {
     })
   }
 
+  htmlTemplate(restaurant) {
+    return `<h4> ${restaurant.name}: ${restaurant.avg_rating} </h4> `
+  }
+
   static all() {
-    return this.orderedRestaurants
-    //might have to do Restaurant.
+    return this.orderedRestaurants.map(rest => Restaurant.prototype.htmlTemplate(rest)).slice(0, 5)
   }
 }
 Restaurant.orderedRestaurants = []
@@ -28,7 +30,10 @@ $(()=> {
         rest.addOrdered()
       })
       const allRests = Restaurant.all()
-      console.log(allRests.map(rest => rest.avg_rating))
+      console.log(allRests)
+      allRests.forEach(restHtml => {
+        $("#restaurants").append(restHtml)
+      })
     })
   })
 
