@@ -15,6 +15,8 @@ class Restaurant < ApplicationRecord
   end
 
   def avg_rating
-
-  end 
+    sum = 0; total = self.reviews.length
+    self.reviews.each{|review| sum += review.rating }
+    sum/total
+  end
 end

@@ -1,12 +1,14 @@
 
 class Restaurant {
   constructor(restaurantObject){
-    this.name = restaurant.name
+    console.log(restaurantObject)
+    this.name = restaurantObject.name
+    this.avg_rating = restaurantObject.avg_rating
   }
   addOrdered() {
     Restaurant.orderedRestaurants.push(this)
     Restaurant.orderedRestaurants.sort(function(a, b){
-      return a.rating - b.rating
+      return b.avg_rating - a.avg_rating
     })
   }
 
@@ -22,9 +24,11 @@ $(()=> {
   $(".top_restaurants").on("click", () => {
     $.get("/restaurants.json", data => {
       data.forEach(restaurant => {
-        const rest = Restaurant(restaurant)
+        const rest = new Restaurant(restaurant)
         rest.addOrdered()
       })
+      const allRests = Restaurant.all()
+      console.log(allRests.map(rest => rest.avg_rating))
     })
   })
 
