@@ -12,18 +12,18 @@ class Restaurant {
   }
 
   htmlTemplate(restaurant) {
-    return `<h4> ${restaurant.name}: ${restaurant.avg_rating} </h4> `
+    return `<h5> ${restaurant.name}: ${restaurant.avg_rating} stars.</h5> `
   }
 
   static all() {
-    return this.orderedRestaurants.map(rest => Restaurant.prototype.htmlTemplate(rest)).slice(0, 5)
+    return this.orderedRestaurants.map(rest => Restaurant.prototype.htmlTemplate(rest)).slice(0, 10)
   }
 }
 Restaurant.orderedRestaurants = []
 
 
 $(()=> {
-  $(".top_restaurants").on("click", () => {
+  $("#top_restaurants_button").on("click", () => {
     $.get("/restaurants.json", data => {
       data.forEach(restaurant => {
         const rest = new Restaurant(restaurant)
@@ -34,6 +34,7 @@ $(()=> {
       allRests.forEach(restHtml => {
         $("#restaurants").append(restHtml)
       })
+      $("#top_restaurants_button").hide()
     })
   })
 
