@@ -11,11 +11,9 @@ $(() => {
     $.get("/users/" + id + ".json", function(data) {
       // debugger;
         const userDiv = $("#user" + id)
-        userDiv.append('<div class="row"')
         data.reviews.forEach(review => {
-          userDiv.append( '<div class="col s12 offset-s6">' + review.restaurant.name + ":" + review.rating + '</div>')
+          userDiv.append( '<div class="col s2 offset-s6">' + review.restaurant.name + ":" + review.rating + '</div>')
         })
-        userDiv.append('</div>')
     });
   });
 

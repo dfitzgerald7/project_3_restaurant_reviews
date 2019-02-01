@@ -11,12 +11,12 @@ class Restaurant {
     })
   }
 
-  htmlTemplate(restaurant) {
-    return `<h5> ${restaurant.name}: ${restaurant.avg_rating} stars.</h5> `
+  htmlTemplate() {
+    return `<h5> ${this.name}: ${this.avg_rating} stars.</h5> `
   }
 
   static all() {
-    return this.orderedRestaurants.map(rest => Restaurant.prototype.htmlTemplate(rest)).slice(0, 10)
+    return this.orderedRestaurants.map(rest => rest.htmlTemplate()).slice(0, 10)
   }
 }
 Restaurant.orderedRestaurants = []

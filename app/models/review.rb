@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   validates :rating, presence: true
   validates :content, presence: true
   accepts_nested_attributes_for :restaurant
+  paginates_per 10
 
   def restaurant_attributes=(restaurant)
     self.restaurant = Restaurant.find_or_create_by(name: restaurant[:name])

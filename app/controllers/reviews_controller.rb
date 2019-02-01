@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
       @user = User.find(params[:user_id])
       @reviews = @user.reviews
     else
-      @reviews = Review.all_sorted
+      @reviews = Review.all_sorted.page params[:page]
       @user = current_user
     end
 
@@ -27,22 +27,11 @@ class ReviewsController < ApplicationController
       @review = Review.create(review_params)
       @review.user = current_user
       @review.save
-      # respond_to do |format|
-      #   format.html {
-      #     if @review.invalid?
-      #       render :new
-      #     else
-      #       redirect_to user_path(current_user)
-      #     end
-      #   }
-      #   format.json {
-          if @review.invalid?
-            render json: {errors: @review.errors.full_messages}, status: 400
-          else
-            render json: @review, status: 201
-          end
-        # }
-      # end
+        if @review.invalid?
+          render json: {errors: @review.errors.full_messages}, status: 400
+        else
+          render json: @review, status: 201
+        end
     else
       flash[:message] = "You must be logged in to make a review."
       redirect_to login_path
