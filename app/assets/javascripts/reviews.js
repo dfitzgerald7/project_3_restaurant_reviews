@@ -10,10 +10,10 @@ $(() => {
     id = $(this).data("id");
     buttonId = $(this).data("button_id");
     $.get("/users/" + id + ".json", function(data) {
-        const userDiv = $(`#${buttonId}`)
-        data.reviews.forEach(review => {
+        const userDiv = $(`#user_div-${buttonId}`)
+        data.reviews.slice(0,10).forEach(review => {
           userDiv.append(
-            '<div class="col s4 offset-s1">' + review.restaurant.name + ":" + review.rating + ' stars</div> <br>' +
+            '<nobr><div class="col s12 offset-s1"> <h5>' + review.restaurant.name + ":</h5> <h6>" + review.rating + ' stars</h6></div></nobr> <br>' +
             '<div class="col s6 offset-s2"> "' + review.content + '" </div>')
         })
     });
@@ -22,13 +22,15 @@ $(() => {
   $(".restaurant").on("click", function(el) {
     // el.preventDefault();
     id = $(this).data("id");
+    buttonId = $(this).data("button_id");
     $.get("/restaurants/" + id + ".json", function(data) {
       //put average rating here
         let descriptionText = "" //"<div> Average rating:" + sumRatings(data.ratings) + "<div>";
-        data.reviews.forEach(review => {
-          descriptionText += "<div>" + review.rating + ":" + review.content+ "</div>";
+        data.reviews.slice(0,5).forEach(review => {
+          descriptionText += '<div class="col s11 offset-s1">' + review.rating + " stars: " + review.content+ "</div>";
         })
-        $("#restaurant" + id).html(descriptionText);
+        $("#restaurant_div-" + buttonId).html(descriptionText);
+
     });
   });
 
