@@ -2,6 +2,7 @@
 class Restaurant {
   constructor(restaurantObject){
     this.name = restaurantObject.name
+    this.reviews = restaurantObject.reviews
     this.avg_rating = restaurantObject.avg_rating
   }
   addOrdered() {
@@ -12,11 +13,20 @@ class Restaurant {
   }
 
   htmlTemplate() {
-    return `<h5> ${this.name}: ${this.avg_rating} stars.</h5> `
+    return `<div class="row">` +
+      `<div class="col s12 m7">` +
+    `  <div class="card blue-grey darken-1">` +
+        `<div class="card-content white-text">` +
+          `<span class="card-title">${this.name}: ${this.avg_rating} stars.</span>` +
+        `</div>` +
+          `<p class="white-text"> "${this.reviews[Math.floor(Math.random() * this.reviews.length)].content}"</p>` +
+        `</div>` +
+      `</div>` +
+    `</div>`
   }
 
   static all() {
-    return this.orderedRestaurants.map(rest => rest.htmlTemplate()).slice(0, 10)
+    return this.orderedRestaurants.map(rest => rest.htmlTemplate()).slice(0, 5)
   }
 }
 Restaurant.orderedRestaurants = []

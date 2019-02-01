@@ -22,9 +22,10 @@
 
 <ul>
   <div id="new_review"> </div>
+  <% i = 0 %>
   <% @reviews.each do |review| %>
-    <button class="username" data-id="<%=review.user.id %>"> <%=review.user.username%>: </button>
-    <div id="user<%= review.user.id %>" class="row" > </div> <!-- adding user show page -->
+    <button class="username" data-id="<%=review.user.id %>" data-button_id="<%=i%>"> <%=review.user.username%>: </button>
+    <div id="<%=i%>" class="row" > </div> <!-- adding user show page -->
     <div class="row">
       <li class="col s9 push-s1"> Restaurant: <button
         class="restaurant" data-id="<%= review.restaurant.id %>"> <%=review.restaurant.name%> </button <br>
@@ -33,6 +34,7 @@
       Review: <%= review.content %> </li>
     </div>
     <br>
+    <% i += 1 %>
   <% end %>
 </ul>
 <%= paginate @reviews %>

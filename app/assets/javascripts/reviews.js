@@ -8,11 +8,13 @@ $(() => {
   $(".username").on("click", function(el) {
     // el.preventDefault();
     id = $(this).data("id");
+    buttonId = $(this).data("button_id");
     $.get("/users/" + id + ".json", function(data) {
-      // debugger;
-        const userDiv = $("#user" + id)
+        const userDiv = $(`#${buttonId}`)
         data.reviews.forEach(review => {
-          userDiv.append( '<div class="col s2 offset-s6">' + review.restaurant.name + ":" + review.rating + '</div>')
+          userDiv.append(
+            '<div class="col s4 offset-s1">' + review.restaurant.name + ":" + review.rating + ' stars</div> <br>' +
+            '<div class="col s6 offset-s2"> "' + review.content + '" </div>')
         })
     });
   });
