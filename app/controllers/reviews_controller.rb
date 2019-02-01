@@ -37,9 +37,9 @@ class ReviewsController < ApplicationController
       #   }
       #   format.json {
           if @review.invalid?
-            render json: {errors: @review.errors.full_messages}, status: :bad_request
+            render json: {errors: @review.errors.full_messages}, status: 400
           else
-            render json: @review, status: :ok
+            render json: @review, status: 201
           end
         # }
       # end

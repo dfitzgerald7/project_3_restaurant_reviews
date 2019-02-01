@@ -57,7 +57,10 @@ $(() => {
       $("form").hide()
       $(".review").show()
     }).fail(review=> {
-      $("#error_message").append(review.errors)
+      let alertString = ""
+      review.responseJSON.errors.forEach(error => alertString += `${error}\n`)
+      alert(alertString)
+      $("form input").last().prop('disabled', false);
     })
   })
 

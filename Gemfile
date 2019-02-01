@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.3'
-gem 'active_model_serializers' 
+gem 'kaminari'
+gem 'active_model_serializers'
 gem "bcrypt"
 gem "pry"
 gem 'materialize-sass', '~> 1.0.0'
