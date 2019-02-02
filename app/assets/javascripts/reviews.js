@@ -67,10 +67,3 @@ $(() => {
   })
 
  });
-
-// function sumRatings(reviewsArray){
-//   // debugger;
-//   let sum = 0, length = reviewsArray.length
-//   reviewsArray.forEach(rating => sum += reviews.rating)
-//   return sum/length
-// }
