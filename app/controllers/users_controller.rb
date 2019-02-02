@@ -16,15 +16,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if session[:user_id] = params[:id]
-      @user = User.find(params[:id])
-      respond_to do |format|
-        format.html { render :show }
-        format.json { render json: @user }
-      end
-    else
-      flash[:message] = "You cannot see another user's information."
-      redirect_to :root
+    user = User.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: user }
     end
   end
 
