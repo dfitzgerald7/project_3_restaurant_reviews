@@ -1,6 +1,6 @@
 
 $(document).ready(()=> {
-  $("form").hide();
+  $(".review_form").hide();
 });
 
 
@@ -41,7 +41,7 @@ $(() => {
 
   })
 
-  $("form").submit((el) => {
+  $(".review_form").submit((el) => {
     el.preventDefault();
     const review = $("form").serialize();
     $.post('/reviews', review).done(review => {

@@ -10,7 +10,7 @@
 <div id="error_message"> </div>
 <div id="new_review_form">
   <div>
-    <%= form_tag("/reviews", method: "post") do%>
+    <%= form_tag("/reviews", method: "post", class: "review_form") do%>
       Restaurant: <%= text_field_tag "review[restaurant_attributes][name]" %>
       Rating: <%= text_field_tag "review[rating]" %>
       Content: <%= text_field_tag "review[content]" %>
