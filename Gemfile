@@ -8,8 +8,8 @@ gem "bcrypt"
 gem "pry"
 gem 'materialize-sass', '~> 1.0.0'
 gem "jquery-rails"
-gem "omniauth"
-gem "omniauth-github"
+# gem "omniauth"
+# gem "omniauth-github"
 gem "dotenv-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
